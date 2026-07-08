@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ESMA DEV STUDIO — データビジュアライゼーション作品集</title>
-<meta name="description" content="実データで作る3Dビジュアライゼーション作品集。鉄道路線・太陽系・震源・星座・人工衛星をブラウザで立体表示します。" />
+<meta name="description" content="ブラウザ3Dビジュアライゼーション作品集。鉄道路線・太陽系・震源・星座・人工衛星・人体解剖を立体表示します。" />
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">✦</text></svg>' />
 <style>
   :root {
@@ -124,13 +124,13 @@
     <div class="eyebrow">ESMA DEV STUDIO</div>
     <h1>DATA <span class="thin">VISUALIZATIONS</span></h1>
     <p class="lede">
-      実データで作るブラウザ3Dビジュアライゼーション作品集。
-      鉄道の地下深度から人工衛星の軌道まで、公開データを立体空間に描いています。
+      ブラウザで動く3Dビジュアライゼーション作品集。
+      鉄道の地下深度から人工衛星の軌道、人体の解剖まで、データを立体空間に描いています。
       すべてPCブラウザでそのまま動きます(インストール不要)。
     </p>
     <div class="stats">
-      <span><b>5</b> WORKS</span>
-      <span><b>100%</b> OPEN DATA</span>
+      <span><b>6</b> WORKS</span>
+      <span><b>OPEN DATA</b> DRIVEN</span>
       <span>Three.js / React / TypeScript</span>
     </div>
   </header>
@@ -281,6 +281,37 @@
         <div class="card-links">
           <a class="btn primary" href="https://esma-dev-studio.github.io/satellites-3d/">アプリを開く</a>
           <a class="btn ghost" href="https://github.com/esma-dev-studio/satellites-3d">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 人体 -->
+    <div class="card" style="--card-accent:#ff8fa0">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#01020a"/>
+        <ellipse cx="160" cy="88" rx="64" ry="46" fill="none" stroke="#3a4d7a" opacity="0.6" stroke-dasharray="4 5"/>
+        <g fill="none" stroke="#6f8fc8" stroke-width="1.8" opacity="0.9">
+          <circle cx="160" cy="32" r="11"/>
+          <path d="M138 54 C 150 47, 170 47, 182 54 L 178 100 C 170 106, 150 106, 142 100 Z"/>
+          <path d="M138 54 L 126 92 M182 54 L 194 92"/>
+          <path d="M148 104 L 143 150 M172 104 L 177 150"/>
+        </g>
+        <g fill="none" stroke="#8aa8dd" stroke-width="1.1" opacity="0.7">
+          <path d="M148 62 Q 160 68 172 62"/>
+          <path d="M147 70 Q 160 76 173 70"/>
+          <path d="M147 78 Q 160 84 173 78"/>
+        </g>
+        <circle cx="154" cy="69" r="4.6" fill="#ff5d6e"/>
+        <circle cx="154" cy="69" r="10" fill="#ff5d6e" opacity="0.25"/>
+        <circle cx="163" cy="90" r="3.4" fill="#ffb14a" opacity="0.85"/>
+      </svg>
+      <div class="card-body">
+        <h2>人体3D解剖ビューア<span class="en">HUMAN ANATOMY 3D</span></h2>
+        <p>骨格・筋肉・内臓をレイヤーで切り替えて学べる教育用3Dビューア。部位をクリックすると名前と解説を表示し、単独表示やその部位へのズームにも対応。</p>
+        <div class="tags"><span class="tag">骨格・筋肉・内臓</span><span class="tag">部位クリック解説</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/anatomy-3d-viewer/">アプリを開く</a>
+          <a class="btn ghost" href="https://github.com/esma-dev-studio/anatomy-3d-viewer">GitHub</a>
         </div>
       </div>
     </div>
