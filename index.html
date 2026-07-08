@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ESMA DEV STUDIO — データビジュアライゼーション作品集</title>
+<meta name="description" content="実データで作る3Dビジュアライゼーション作品集。鉄道路線・太陽系・震源・星座・人工衛星をブラウザで立体表示します。" />
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">✦</text></svg>' />
+<style>
+  :root {
+    --bg: #030610;
+    --panel: rgba(12, 17, 30, 0.85);
+    --panel-border: rgba(150, 170, 220, 0.16);
+    --text: #e8eef9;
+    --text-dim: #8fa1bd;
+    --text-faint: #5c6b85;
+    --accent: #6fa4ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(60, 90, 160, 0.16), transparent 60%),
+      radial-gradient(900px 500px at 10% 110%, rgba(90, 60, 160, 0.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", "Yu Gothic UI", "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 56px 22px 40px; }
+
+  /* ---------- ヘッダー ---------- */
+  .eyebrow { font-size: 11px; letter-spacing: 0.34em; color: var(--text-dim); }
+  h1 {
+    margin-top: 6px;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-shadow: 0 0 24px rgba(111, 164, 255, 0.45);
+  }
+  h1 .thin { font-weight: 300; color: var(--accent); }
+  .lede {
+    margin-top: 12px;
+    max-width: 640px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--text-dim);
+  }
+  .stats {
+    display: flex; flex-wrap: wrap; gap: 10px 26px;
+    margin-top: 18px; font-size: 11.5px; color: var(--text-faint);
+    letter-spacing: 0.12em;
+  }
+  .stats b { color: var(--accent); font-size: 14px; letter-spacing: 0.04em; }
+
+  /* ---------- カード ---------- */
+  .grid {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    position: relative;
+    display: flex; flex-direction: column;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    overflow: hidden;
+    color: inherit;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: var(--card-accent, var(--accent));
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 24px color-mix(in srgb, var(--card-accent, var(--accent)) 25%, transparent);
+  }
+  .thumb { display: block; width: 100%; aspect-ratio: 16 / 8.4; background: #01020a; }
+  .card-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .card h2 { font-size: 17px; font-weight: 800; letter-spacing: 0.04em; }
+  .card h2 .en {
+    display: block; margin-top: 2px;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.26em; color: var(--card-accent, var(--accent));
+  }
+  .card p { font-size: 12.5px; line-height: 1.85; color: var(--text-dim); flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 10px; letter-spacing: 0.08em; color: var(--text-faint);
+    border: 1px solid rgba(150, 170, 220, 0.18); border-radius: 999px; padding: 3px 9px;
+  }
+  .card-links { display: flex; gap: 10px; margin-top: 6px; }
+  .btn {
+    flex: 1; text-align: center; text-decoration: none;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    padding: 9px 0; border-radius: 8px;
+    color: #fff; background: color-mix(in srgb, var(--card-accent, var(--accent)) 22%, transparent);
+    border: 1px solid color-mix(in srgb, var(--card-accent, var(--accent)) 45%, transparent);
+    transition: background 0.15s;
+  }
+  .btn:hover { background: color-mix(in srgb, var(--card-accent, var(--accent)) 38%, transparent); }
+  /* カード全体をアプリへのリンクにする(stretched-link) */
+  .btn.primary::after { content: ""; position: absolute; inset: 0; }
+  .btn.ghost {
+    flex: 0 0 auto; padding: 9px 14px;
+    position: relative; z-index: 2;
+    color: var(--text-dim); background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .btn.ghost:hover { color: #fff; }
+
+  /* ---------- フッター ---------- */
+  footer {
+    margin-top: 48px; padding-top: 20px;
+    border-top: 1px solid rgba(150, 170, 220, 0.12);
+    font-size: 11px; line-height: 2; color: var(--text-faint);
+  }
+  footer a { color: var(--text-dim); }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">ESMA DEV STUDIO</div>
+    <h1>DATA <span class="thin">VISUALIZATIONS</span></h1>
+    <p class="lede">
+      実データで作るブラウザ3Dビジュアライゼーション作品集。
+      鉄道の地下深度から人工衛星の軌道まで、公開データを立体空間に描いています。
+      すべてPCブラウザでそのまま動きます(インストール不要)。
+    </p>
+    <div class="stats">
+      <span><b>5</b> WORKS</span>
+      <span><b>100%</b> OPEN DATA</span>
+      <span>Three.js / React / TypeScript</span>
+    </div>
+  </header>
+
+  <main class="grid">
+
+    <!-- 鉄道 -->
+    <div class="card" style="--card-accent:#6fa4ff">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#01020a"/>
+        <g opacity="0.25" stroke="#2a3d63" stroke-width="1">
+          <path d="M0 42 H320 M0 84 H320 M0 126 H320 M64 0 V168 M128 0 V168 M192 0 V168 M256 0 V168"/>
+        </g>
+        <path d="M10 130 C 80 120, 120 60, 180 62 S 290 90, 315 70" fill="none" stroke="#9acb3b" stroke-width="3" opacity="0.9"/>
+        <path d="M0 90 C 70 95, 150 130, 230 118 S 300 96, 320 100" fill="none" stroke="#f5a200" stroke-width="3" opacity="0.9"/>
+        <path d="M30 160 C 90 110, 200 140, 250 80 S 300 30, 320 28" fill="none" stroke="#ce2079" stroke-width="3" opacity="0.9"/>
+        <path d="M0 30 C 60 40, 140 20, 210 40 S 300 70, 320 60" fill="none" stroke="#29c5f6" stroke-width="3" opacity="0.9"/>
+        <g fill="#fff">
+          <circle cx="180" cy="62" r="3.4"/><circle cx="230" cy="118" r="3.4"/><circle cx="250" cy="80" r="3.4"/><circle cx="90" cy="123" r="2.4"/><circle cx="140" cy="27" r="2.4"/>
+        </g>
+      </svg>
+      <div class="card-body">
+        <h2>東京・神奈川 鉄道路線 3Dマップ<span class="en">TOKYO × KANAGAWA RAIL 3D</span></h2>
+        <p>48路線・約800駅を実際の線形で立体表示。地下鉄が地表の下に沈み、路線ごとの深さの違いや地下・高架の入れ替わりが見える。県境・海岸線つき。</p>
+        <div class="tags"><span class="tag">国土数値情報 N02/N03</span><span class="tag">地下×高架</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/tokyo-kanagawa-rail-3d/">アプリを開く</a>
+          <a class="btn ghost" href="https://github.com/esma-dev-studio/tokyo-kanagawa-rail-3d">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 太陽系 -->
+    <div class="card" style="--card-accent:#ffc85c">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#01020a"/>
+        <g fill="#fff" opacity="0.5">
+          <circle cx="30" cy="20" r="0.8"/><circle cx="90" cy="140" r="0.8"/><circle cx="250" cy="30" r="0.8"/><circle cx="300" cy="120" r="0.8"/><circle cx="180" cy="14" r="0.8"/>
+        </g>
+        <g fill="none" stroke="#3a4d7a" opacity="0.7">
+          <ellipse cx="160" cy="88" rx="50" ry="20"/>
+          <ellipse cx="160" cy="88" rx="90" ry="36"/>
+          <ellipse cx="160" cy="88" rx="130" ry="52"/>
+        </g>
+        <circle cx="160" cy="88" r="13" fill="#ffc85c"/>
+        <circle cx="160" cy="88" r="20" fill="#ffc85c" opacity="0.22"/>
+        <circle cx="205" cy="80" r="4" fill="#5c8fe6"/>
+        <circle cx="88" cy="107" r="6" fill="#d8a97a"/>
+        <g transform="translate(258,64) rotate(-18)">
+          <circle r="5.5" fill="#e0c084"/>
+          <ellipse rx="10.5" ry="2.6" fill="none" stroke="#e0c084" stroke-width="1.4" opacity="0.85"/>
+        </g>
+      </svg>
+      <div class="card-body">
+        <h2>太陽系 立体マップ<span class="en">SOLAR SYSTEM 3D</span></h2>
+        <p>惑星・準惑星・主要衛星18天体を実際の軌道要素で配置。時間再生で公転・自転が動き、土星の環や天王星の横倒し自転も再現。天体を追跡できる。</p>
+        <div class="tags"><span class="tag">NASA JPL 軌道要素</span><span class="tag">時間再生</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/solar-system-3d/">アプリを開く</a>
+          <a class="btn ghost" href="https://github.com/esma-dev-studio/solar-system-3d">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 震源 -->
+    <div class="card" style="--card-accent:#ff8a5a">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#01020a"/>
+        <path d="M60 34 C 100 22, 150 30, 190 46 S 270 60, 300 44" fill="none" stroke="#7a93c4" stroke-width="1.4" opacity="0.7"/>
+        <path d="M290 20 C 260 60, 240 110, 246 160" fill="none" stroke="#e8763a" stroke-width="1.6" opacity="0.8" stroke-dasharray="5 4"/>
+        <g>
+          <circle cx="250" cy="52" r="3.6" fill="#ffdb6e"/><circle cx="262" cy="66" r="2.6" fill="#ffdb6e"/>
+          <circle cx="236" cy="70" r="3" fill="#ff9e4a"/><circle cx="222" cy="84" r="2.6" fill="#ff9e4a"/>
+          <circle cx="205" cy="96" r="3.4" fill="#f2544a"/><circle cx="188" cy="106" r="2.6" fill="#f2544a"/>
+          <circle cx="168" cy="118" r="3" fill="#c43897"/><circle cx="150" cy="128" r="2.6" fill="#c43897"/>
+          <circle cx="128" cy="140" r="3.2" fill="#7a52dc"/><circle cx="106" cy="150" r="2.6" fill="#3d66e8"/>
+          <circle cx="276" cy="42" r="2.2" fill="#ffdb6e"/><circle cx="216" cy="108" r="2" fill="#c43897"/><circle cx="242" cy="88" r="2" fill="#f2544a"/>
+        </g>
+      </svg>
+      <div class="card-body">
+        <h2>日本の震源 3Dマップ<span class="en">JAPAN QUAKES 3D</span></h2>
+        <p>25年分・16,620個の地震(M4.5+)を実際の深さで表示。太平洋プレートが日本の下へ沈み込む形が震源の並びとして浮かび上がる。時間再生では2011年3月が一斉に光る。</p>
+        <div class="tags"><span class="tag">USGS 実深度データ</span><span class="tag">プレート境界</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/japan-quakes-3d/">アプリを開く</a>
+          <a class="btn ghost" href="https://github.com/esma-dev-studio/japan-quakes-3d">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 星座 -->
+    <div class="card" style="--card-accent:#cfe0ff">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#01020a"/>
+        <g fill="#fff" opacity="0.4">
+          <circle cx="40" cy="120" r="0.9"/><circle cx="70" cy="30" r="0.9"/><circle cx="260" cy="140" r="0.9"/><circle cx="300" cy="40" r="0.9"/><circle cx="150" cy="150" r="0.9"/>
+        </g>
+        <g stroke="#8fb0e8" stroke-width="1.2" opacity="0.9" fill="none">
+          <path d="M120 36 L150 62 L146 96 L118 128 M146 96 L186 92 L214 60 M186 92 L196 128"/>
+        </g>
+        <g>
+          <circle cx="120" cy="36" r="3.6" fill="#ffd9c4"/>
+          <circle cx="150" cy="62" r="2.6" fill="#fff"/>
+          <circle cx="146" cy="96" r="2.4" fill="#cfe0ff"/>
+          <circle cx="118" cy="128" r="3.2" fill="#bcd4ff"/>
+          <circle cx="186" cy="92" r="2.8" fill="#fff"/>
+          <circle cx="214" cy="60" r="2.4" fill="#cfe0ff"/>
+          <circle cx="196" cy="128" r="2.2" fill="#fff"/>
+        </g>
+        <circle cx="120" cy="36" r="7" fill="#ffd9c4" opacity="0.25"/>
+        <circle cx="118" cy="128" r="6" fill="#bcd4ff" opacity="0.25"/>
+      </svg>
+      <div class="card-body">
+        <h2>星座の本当のかたち<span class="en">STELLAR NEIGHBORHOOD 3D</span></h2>
+        <p>約4万個の恒星を視差による実距離で立体配置。星座を選ぶと「地球から見た形」になり、回り込むと形が崩れていく——星座が方向の一致にすぎないことを体験できる。</p>
+        <div class="tags"><span class="tag">HYG 恒星カタログ</span><span class="tag">88星座</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/constellations-3d/">アプリを開く</a>
+          <a class="btn ghost" href="https://github.com/esma-dev-studio/constellations-3d">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 人工衛星 -->
+    <div class="card" style="--card-accent:#6fc3ff">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#01020a"/>
+        <circle cx="160" cy="84" r="34" fill="#0c2547"/>
+        <path d="M132 66 C 145 58, 178 60, 186 74 C 178 84, 150 90, 136 84 Z" fill="#1d4f8c" opacity="0.9"/>
+        <circle cx="160" cy="84" r="37" fill="none" stroke="#3b6fb8" opacity="0.5"/>
+        <g fill="none" stroke="#2a3d63" opacity="0.8">
+          <ellipse cx="160" cy="84" rx="62" ry="48"/>
+          <ellipse cx="160" cy="84" rx="96" ry="30" transform="rotate(-18 160 84)"/>
+          <ellipse cx="160" cy="84" rx="130" ry="50" transform="rotate(10 160 84)"/>
+        </g>
+        <g fill="#6fc3ff">
+          <circle cx="160" cy="36" r="2"/><circle cx="222" cy="84" r="2"/><circle cx="98" cy="84" r="2"/>
+          <circle cx="68" cy="70" r="2"/><circle cx="252" cy="98" r="2"/><circle cx="196" cy="126" r="2"/><circle cx="120" cy="42" r="2"/>
+        </g>
+        <circle cx="286" cy="66" r="2.6" fill="#ff8a7a"/>
+        <circle cx="200" cy="52" r="3" fill="#fff"/>
+        <circle cx="200" cy="52" r="6.5" fill="#fff" opacity="0.25"/>
+      </svg>
+      <div class="card-body">
+        <h2>人工衛星ライブ軌道マップ<span class="en">SATELLITES 3D</span></h2>
+        <p>稼働中の全衛星 約16,000機(スターリンク1万機超)をSGP4軌道計算でリアルタイム表示。慣性空間で地球が自転し、静止衛星の同期やISSの世界一周が見える。</p>
+        <div class="tags"><span class="tag">CelesTrak TLE</span><span class="tag">ISS追跡</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/satellites-3d/">アプリを開く</a>
+          <a class="btn ghost" href="https://github.com/esma-dev-studio/satellites-3d">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div>
+      出典: 国土数値情報(国土交通省) / NASA JPL / USGS / HYG Database / CelesTrak / Natural Earth / Solar System Scope ほか。
+      各作品ページに詳細なクレジットを記載しています。
+    </div>
+    <div>
+      <a href="https://github.com/esma-dev-studio">github.com/esma-dev-studio</a> ・ PCブラウザ推奨(WebGL使用)
+    </div>
+  </footer>
+</div>
+</body>
+</html>
