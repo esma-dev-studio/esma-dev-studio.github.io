@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ESMA DEV STUDIO — データビジュアライゼーション作品集</title>
-<meta name="description" content="ブラウザ3D作品集。鉄道路線・太陽系・震源・星座・人工衛星・人体解剖・月と火星の地形の立体表示に、子ども向けアプリ「モノの旅」「こっきクイズ」も。" />
+<meta name="description" content="ブラウザ3D作品集。鉄道路線・太陽系・震源・星座・人工衛星・人体解剖・月と火星の地形の立体表示に、子ども向けアプリ「モノの旅」「こっきクイズ」「電車どれかな？」も。" />
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">✦</text></svg>' />
 <style>
   :root {
@@ -120,7 +120,7 @@
       すべてPCブラウザでそのまま動きます(インストール不要)。
     </p>
     <div class="stats">
-      <span><b>9</b> WORKS</span>
+      <span><b>10</b> WORKS</span>
       <span><b>OPEN DATA</b> DRIVEN</span>
       <span>Three.js / React / TypeScript</span>
     </div>
@@ -408,6 +408,53 @@
         <div class="tags"><span class="tag">80か国・難易度4段階</span><span class="tag">4たく×こたえあて</span></div>
         <div class="card-links">
           <a class="btn primary" href="https://esma-dev-studio.github.io/flag-quiz/">アプリを開く</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 電車どれかな？ -->
+    <div class="card" style="--card-accent:#f0c84b">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#071d2b"/>
+        <g opacity="0.28" stroke="#6a8794" stroke-width="1">
+          <path d="M0 34 H320 M0 68 H320 M0 102 H320 M0 136 H320"/>
+          <path d="M54 0 V168 M108 0 V168 M162 0 V168 M216 0 V168 M270 0 V168"/>
+        </g>
+        <!-- 線路 -->
+        <path d="M0 146 H320" stroke="#8fa5ad" stroke-width="4"/>
+        <path d="M0 158 H320" stroke="#8fa5ad" stroke-width="4"/>
+        <g stroke="#526b76" stroke-width="3">
+          <path d="M22 142 L8 164 M62 142 L48 164 M102 142 L88 164 M142 142 L128 164 M182 142 L168 164 M222 142 L208 164 M262 142 L248 164 M302 142 L288 164"/>
+        </g>
+        <!-- 電車 -->
+        <g transform="translate(24 42)">
+          <path d="M8 18 Q8 7 20 7 H177 Q204 7 225 29 L240 48 Q246 56 237 63 H20 Q8 63 8 51 Z" fill="#f4f7f2"/>
+          <path d="M178 7 Q205 9 225 29 L237 45 H183 Z" fill="#22485d"/>
+          <rect x="28" y="18" width="38" height="22" rx="3" fill="#22485d"/>
+          <rect x="73" y="18" width="38" height="22" rx="3" fill="#22485d"/>
+          <rect x="118" y="18" width="38" height="22" rx="3" fill="#22485d"/>
+          <path d="M9 47 H240" stroke="#17875b" stroke-width="7"/>
+          <path d="M10 55 H235" stroke="#f0c84b" stroke-width="3"/>
+          <circle cx="52" cy="66" r="10" fill="#132b38" stroke="#81959d" stroke-width="3"/>
+          <circle cx="188" cy="66" r="10" fill="#132b38" stroke="#81959d" stroke-width="3"/>
+        </g>
+        <!-- クイズ記号 -->
+        <g transform="translate(270 42)">
+          <circle r="25" fill="#f0c84b"/>
+          <text x="0" y="10" font-size="34" font-weight="900" text-anchor="middle" fill="#071d2b" font-family="Segoe UI, sans-serif">?</text>
+        </g>
+        <g fill="#f0c84b" font-family="Segoe UI, sans-serif" font-size="9" font-weight="700" letter-spacing="2">
+          <text x="26" y="28">LOOK</text>
+          <text x="76" y="28">FIND</text>
+          <text x="124" y="28">ANSWER</text>
+        </g>
+      </svg>
+      <div class="card-body">
+        <h2>電車どれかな？<span class="en">DENSHA OBSERVATION QUIZ (KIDS)</span></h2>
+        <p>実車写真を見て、新幹線・特急は「形式＋愛称」、通勤電車・地下鉄は主に走る路線を当てる子ども向け4択クイズ。全30車種、3段階の難易度、ヒント・復習・図鑑・成績保存つき。</p>
+        <div class="tags"><span class="tag">30車種・難易度3段階</span><span class="tag">形式＋愛称／路線</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/densha-dorekana/">アプリを開く</a>
         </div>
       </div>
     </div>
