@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ESMA DEV STUDIO — データビジュアライゼーション作品集</title>
-<meta name="description" content="ブラウザ3D作品集。鉄道路線・太陽系・震源・星座・人工衛星・人体解剖・月と火星の地形の立体表示に、子ども向けアプリ「モノの旅」「こっきクイズ」「電車どれかな？」も。" />
+<meta name="description" content="ブラウザで楽しめる3D作品と体験型ゲームの作品集。鉄道・宇宙・人体の立体表示に、子ども向けアプリ「モノの旅」「こっきクイズ」「電車どれかな？」「リズム・エクスプレス」も。" />
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">✦</text></svg>' />
 <style>
   :root {
@@ -115,14 +115,14 @@
     <div class="eyebrow">ESMA DEV STUDIO</div>
     <h1>DATA <span class="thin">VISUALIZATIONS</span></h1>
     <p class="lede">
-      ブラウザで動く3Dビジュアライゼーション作品集。
-      鉄道の地下深度から人工衛星の軌道、人体の解剖まで、データを立体空間に描いています。
-      すべてPCブラウザでそのまま動きます(インストール不要)。
+      ブラウザで動く3Dビジュアライゼーションと体験型ゲームの作品集。
+      鉄道の地下深度や人工衛星の軌道から、音楽に合わせて遊ぶリズムゲームまで集めています。
+      インストール不要で、そのまま楽しめます。
     </p>
     <div class="stats">
-      <span><b>10</b> WORKS</span>
-      <span><b>OPEN DATA</b> DRIVEN</span>
-      <span>Three.js / React / TypeScript</span>
+      <span><b>11</b> WORKS</span>
+      <span><b>DATA + PLAY</b> EXPERIENCES</span>
+      <span>Three.js / React / Web Audio</span>
     </div>
   </header>
 
@@ -459,6 +459,64 @@
       </div>
     </div>
 
+    <!-- リズム・エクスプレス -->
+    <div class="card" style="--card-accent:#63ded0">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="光る線路を走るリズム列車">
+        <defs>
+          <linearGradient id="rx-sky" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#061827"/>
+            <stop offset="0.58" stop-color="#123a52"/>
+            <stop offset="1" stop-color="#3a284a"/>
+          </linearGradient>
+          <linearGradient id="rx-train" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c4fff7"/>
+            <stop offset="0.2" stop-color="#63ded0"/>
+            <stop offset="1" stop-color="#14647a"/>
+          </linearGradient>
+          <filter id="rx-glow" x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect width="320" height="168" fill="url(#rx-sky)"/>
+        <g fill="#c4fff7" opacity="0.52">
+          <circle cx="32" cy="24" r="1"/><circle cx="92" cy="18" r="0.8"/><circle cx="268" cy="28" r="1"/><circle cx="296" cy="61" r="0.8"/>
+        </g>
+        <g stroke="#63ded0" stroke-linecap="round" opacity="0.28">
+          <path d="M8 42 H62"/><path d="M30 66 H96"/><path d="M250 46 H310"/><path d="M232 70 H294"/>
+        </g>
+        <g stroke="#63ded0" fill="none" filter="url(#rx-glow)">
+          <path d="M-10 166 L214 72 L330 150" stroke-width="3"/>
+          <path d="M62 168 L214 72 L280 168" stroke-width="2" opacity="0.78"/>
+        </g>
+        <g stroke="#ffe06b" stroke-width="3" opacity="0.82">
+          <path d="M34 154 L286 154"/><path d="M66 140 L270 140"/><path d="M98 126 L252 126"/><path d="M130 112 L238 112"/>
+        </g>
+        <g transform="translate(72 84) rotate(-2)">
+          <path d="M-34 34 H0" stroke="#63ded0" stroke-width="7" opacity="0.25" stroke-linecap="round"/>
+          <rect x="0" y="0" width="112" height="50" rx="12" fill="url(#rx-train)" stroke="#c4fff7" stroke-width="2"/>
+          <path d="M84 0 H102 Q112 0 112 12 V24 H84 Z" fill="#0b2638"/>
+          <rect x="12" y="10" width="22" height="15" rx="3" fill="#0b2638"/>
+          <rect x="42" y="10" width="22" height="15" rx="3" fill="#0b2638"/>
+          <path d="M0 35 H112" stroke="#ff7468" stroke-width="6"/>
+          <circle cx="25" cy="52" r="9" fill="#061827" stroke="#ffe06b" stroke-width="3"/>
+          <circle cx="88" cy="52" r="9" fill="#061827" stroke="#ffe06b" stroke-width="3"/>
+          <circle cx="104" cy="30" r="4" fill="#ffe06b" filter="url(#rx-glow)"/>
+        </g>
+        <g filter="url(#rx-glow)">
+          <circle cx="230" cy="94" r="8" fill="#ff7468"/><circle cx="262" cy="112" r="6" fill="#ffe06b"/><circle cx="284" cy="88" r="5" fill="#63ded0"/>
+        </g>
+      </svg>
+      <div class="card-body">
+        <h2>リズム・エクスプレス ― ビート列車で3つの世界へ<span class="en">RHYTHM EXPRESS (KIDS)</span></h2>
+        <p>音楽に合わせてタップ・長押し・連打・線路切り替え。はじまりの街、ジャングル、月面を走り、ミスしても最後の駅まで進める小学生向けリズムゲーム。</p>
+        <div class="tags"><span class="tag">3路線×3難易度</span><span class="tag">Web Audio + Canvas</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/rhythm-express/">アプリを開く</a>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <footer>
@@ -466,7 +524,7 @@
       出典: 国土数値情報(国土交通省) / NASA JPL / USGS / HYG Database / CelesTrak / Natural Earth / Solar System Scope ほか。
       各作品ページに詳細なクレジットを記載しています。
     </div>
-    <div>PCブラウザ推奨(WebGL使用)</div>
+    <div>PC・スマートフォン対応(一部作品はWebGL使用)</div>
   </footer>
 </div>
 </body>
