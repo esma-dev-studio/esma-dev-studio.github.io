@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ESMA DEV STUDIO — データビジュアライゼーション作品集</title>
-<meta name="description" content="ブラウザで楽しめる3D作品と体験型ゲームの作品集。鉄道・宇宙・人体の立体表示に、子ども向けアプリ「モノの旅」「こっきクイズ」「電車どれかな？」「リズム・エクスプレス」も。" />
+<meta name="description" content="ブラウザで楽しめる3D作品と体験型ゲームの作品集。鉄道・宇宙・人体の立体表示に、子ども向けアプリ「モノの旅」「こっきクイズ」「電車どれかな？」「リズム・エクスプレス」、スポーツ認知ゲーム3本も。" />
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">✦</text></svg>' />
 <style>
   :root {
@@ -120,7 +120,7 @@
       インストール不要で、そのまま楽しめます。
     </p>
     <div class="stats">
-      <span><b>11</b> WORKS</span>
+      <span><b>14</b> WORKS</span>
       <span><b>DATA + PLAY</b> EXPERIENCES</span>
       <span>Three.js / React / Web Audio</span>
     </div>
@@ -459,6 +459,7 @@
       </div>
     </div>
 
+<<<<<<< HEAD
     <!-- リズム・エクスプレス -->
     <div class="card" style="--card-accent:#63ded0">
       <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="光る線路を走るリズム列車">
@@ -513,6 +514,127 @@
         <div class="tags"><span class="tag">3路線×3難易度</span><span class="tag">Web Audio + Canvas</span></div>
         <div class="card-links">
           <a class="btn primary" href="https://esma-dev-studio.github.io/rhythm-express/">アプリを開く</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- シグナル・ヒーロー -->
+    <div class="card" style="--card-accent:#2cc0a0">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#07211c"/>
+        <g opacity="0.25" stroke="#1c4a40" stroke-width="1">
+          <path d="M0 56 H320 M0 112 H320 M80 0 V168 M160 0 V168 M240 0 V168"/>
+        </g>
+        <!-- 味方○ (Go) -->
+        <g>
+          <circle cx="88" cy="60" r="26" fill="#123f36"/>
+          <circle cx="88" cy="60" r="26" fill="none" stroke="#2cc0a0" stroke-width="4"/>
+          <circle cx="88" cy="60" r="14" fill="#2cc0a0" opacity="0.35"/>
+          <circle cx="88" cy="60" r="34" fill="none" stroke="#2cc0a0" stroke-width="1.6" opacity="0.5"/>
+        </g>
+        <g>
+          <circle cx="252" cy="118" r="20" fill="#123f36"/>
+          <circle cx="252" cy="118" r="20" fill="none" stroke="#2cc0a0" stroke-width="3.4"/>
+        </g>
+        <!-- 敵× (No-Go) -->
+        <g>
+          <circle cx="196" cy="52" r="20" fill="#3d1520"/>
+          <g stroke="#ff6b5e" stroke-width="4.4" stroke-linecap="round">
+            <line x1="186" y1="42" x2="206" y2="62"/><line x1="206" y1="42" x2="186" y2="62"/>
+          </g>
+        </g>
+        <g>
+          <circle cx="132" cy="126" r="16" fill="#3d1520"/>
+          <g stroke="#ff6b5e" stroke-width="3.6" stroke-linecap="round">
+            <line x1="124" y1="118" x2="140" y2="134"/><line x1="140" y1="118" x2="124" y2="134"/>
+          </g>
+        </g>
+        <!-- タップの手 -->
+        <circle cx="88" cy="60" r="7" fill="#fff" opacity="0.9"/>
+        <circle cx="88" cy="60" r="12" fill="none" stroke="#fff" stroke-width="1.6" opacity="0.5"/>
+      </svg>
+      <div class="card-body">
+        <h2>まもれ！シグナル・ヒーロー<span class="en">SIGNAL HERO (KIDS)</span></h2>
+        <p>味方の○は素早く叩き、敵×のニセ光は我慢する反射×抑制のGo/No-Goゲーム。我慢するほど伸びる「見きわめボーナス」が核。ローカルランキングとバッジ100種つき(小学生向け)。</p>
+        <div class="tags"><span class="tag">反射×抑制</span><span class="tag">バッジ100種</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/kids-sports-games/signal-hero/">アプリを開く</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- パニックキッチン -->
+    <div class="card" style="--card-accent:#e8873a">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#fdf1e0"/>
+        <!-- カウンター -->
+        <rect x="0" y="118" width="320" height="50" fill="#c98a4e"/>
+        <rect x="0" y="118" width="320" height="6" fill="#e2aa6c"/>
+        <!-- お皿×3 (色つき) -->
+        <g>
+          <ellipse cx="70" cy="132" rx="34" ry="11" fill="#fff"/>
+          <ellipse cx="70" cy="130" rx="24" ry="7" fill="#f2b3a6"/>
+          <ellipse cx="160" cy="132" rx="34" ry="11" fill="#fff"/>
+          <ellipse cx="160" cy="130" rx="24" ry="7" fill="#a9cdec"/>
+          <ellipse cx="250" cy="132" rx="34" ry="11" fill="#fff"/>
+          <ellipse cx="250" cy="130" rx="24" ry="7" fill="#b3ddba"/>
+        </g>
+        <!-- 飛んでくる食材 -->
+        <circle cx="84" cy="46" r="15" fill="#e5533c"/>
+        <path d="M84 32 q4 -8 10 -8" fill="none" stroke="#4f8a5b" stroke-width="3" stroke-linecap="round"/>
+        <g transform="translate(190,58) rotate(-14)">
+          <ellipse rx="17" ry="10" fill="#3d84c6"/>
+          <path d="M17 0 L27 -7 L27 7 Z" fill="#3d84c6"/>
+          <circle cx="-8" cy="-2" r="1.8" fill="#0f2f4a"/>
+        </g>
+        <g transform="translate(264,40) rotate(10)">
+          <path d="M-14 6 Q -14 -8 0 -8 Q 14 -8 14 6 Z" fill="#e0a12a"/>
+          <path d="M-14 6 Q 0 12 14 6" fill="none" stroke="#b97f1c" stroke-width="2"/>
+        </g>
+        <!-- 軌道 -->
+        <path d="M84 62 Q 76 96 70 118" fill="none" stroke="#e8873a" stroke-width="2" stroke-dasharray="2 6" opacity="0.8"/>
+        <path d="M192 70 Q 176 100 162 118" fill="none" stroke="#e8873a" stroke-width="2" stroke-dasharray="2 6" opacity="0.8"/>
+      </svg>
+      <div class="card-body">
+        <h2>パニックキッチン 〜まぜまぜ大混雑〜<span class="en">PANIC KITCHEN (KIDS)</span></h2>
+        <p>飛んでくる食材を、色＋アイコンの合うお皿へドラッグして仕分ける調理アクション。周辺視野・全体把握・状況判断を鍛える。ローカルランキングとバッジ100種つき(小学生向け)。</p>
+        <div class="tags"><span class="tag">周辺視野×判断</span><span class="tag">バッジ100種</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/kids-sports-games/panic-kitchen/">アプリを開く</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- みらいキャッチ -->
+    <div class="card" style="--card-accent:#37c2ff">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg">
+        <rect width="320" height="168" fill="#0a1f3c"/>
+        <!-- ゴールゾーン -->
+        <rect x="0" y="0" width="46" height="168" fill="#ff5470" opacity="0.14"/>
+        <line x1="46" y1="14" x2="46" y2="154" stroke="#ff8ba0" stroke-width="3" stroke-dasharray="9 7"/>
+        <!-- キャッチャー -->
+        <rect x="72" y="52" width="12" height="56" rx="6" fill="#40f0a4"/>
+        <!-- ボール1(直進)＋予測線 -->
+        <circle cx="236" cy="58" r="13" fill="#37c2ff"/>
+        <circle cx="231" cy="53" r="4" fill="#dcf3ff"/>
+        <line x1="223" y1="62" x2="86" y2="80" stroke="#b9e4ff" stroke-width="2" stroke-dasharray="5 7" opacity="0.8"/>
+        <circle cx="84" cy="81" r="15" fill="none" stroke="#b9e4ff" stroke-width="2" opacity="0.8"/>
+        <!-- ボール2(カーブ) -->
+        <circle cx="196" cy="126" r="11" fill="#ff8a3d"/>
+        <circle cx="192" cy="122" r="3.4" fill="#ffe2c6"/>
+        <path d="M207 120 A 15 15 0 1 1 196 111" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity="0.9"/>
+        <path d="M186 128 Q 140 138 92 106" fill="none" stroke="#ffc79a" stroke-width="2" stroke-dasharray="4 7" opacity="0.7"/>
+        <!-- 残像 -->
+        <circle cx="262" cy="52" r="8" fill="#37c2ff" opacity="0.35"/>
+        <circle cx="286" cy="47" r="5.5" fill="#37c2ff" opacity="0.2"/>
+        <circle cx="216" cy="132" r="6.5" fill="#ff8a3d" opacity="0.3"/>
+      </svg>
+      <div class="card-body">
+        <h2>みらいキャッチ 〜さきよみディフェンス〜<span class="en">MIRAI CATCH (KIDS)</span></h2>
+        <p>飛んでくる球の"未来の通り道"を先読みし、着く前に先回りキャッチするGK型ゲーム。むずかしいモードは球が同時に2〜3個、どれを先に止めるかの判断も鍛える(小学生向け)。</p>
+        <div class="tags"><span class="tag">予測×空間認識</span><span class="tag">同時2〜3球モード</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/kids-sports-games/mirai-catch/">アプリを開く</a>
         </div>
       </div>
     </div>
