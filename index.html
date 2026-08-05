@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ESMA DEV STUDIO — データビジュアライゼーション作品集</title>
-<meta name="description" content="ブラウザで楽しめる3D作品と体験型ゲームの作品集。鉄道・宇宙・人体の立体表示に、学習アプリ「けいさんマスター」「かきじゅんマスター」「つながりタウン」、レース「スターカート」、経営「でんしゃタイクーン3D」、運転シミュレーターまで全25作品。" />
+<meta name="description" content="ブラウザで楽しめる3D作品と体験型ゲームの作品集。鉄道・宇宙・人体の立体表示に、学習アプリ「けいさんマスター」「かきじゅんマスター」「つながりタウン」、スローライフ「ルミ島のくらし」、レース「スターカート」、経営「でんしゃタイクーン3D」、運転シミュレーターまで全26作品。" />
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="80" font-size="80">✦</text></svg>' />
 <style>
   :root {
@@ -120,7 +120,7 @@
       カートレースや鉄道経営ゲームまで集めています。インストール不要で、そのまま楽しめます。
     </p>
     <div class="stats">
-      <span><b>25</b> WORKS</span>
+      <span><b>26</b> WORKS</span>
       <span><b>DATA + PLAY</b> EXPERIENCES</span>
       <span>Three.js / React / Web Audio</span>
     </div>
@@ -762,6 +762,64 @@
         <div class="tags"><span class="tag">金融教育</span><span class="tag">小2〜小4</span></div>
         <div class="card-links">
           <a class="btn primary" href="https://esma-dev-studio.github.io/tsunagari-town/">アプリを開く</a>        </div>
+      </div>
+    </div>
+
+    <!-- ルミ島のくらし -->
+    <div class="card" style="--card-accent:#8de6b8">
+      <svg class="thumb" viewBox="0 0 320 168" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="夜になると光る島のスローライフ">
+        <defs>
+          <linearGradient id="li-sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#050b1e"/>
+            <stop offset="0.62" stop-color="#0c1c38"/>
+            <stop offset="1" stop-color="#123048"/>
+          </linearGradient>
+          <radialGradient id="li-pool" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#ffd98a" stop-opacity="0.75"/>
+            <stop offset="1" stop-color="#ffd98a" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="li-glow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="2.6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <rect width="320" height="168" fill="url(#li-sky)"/>
+        <g fill="#cfe3ff" opacity="0.55">
+          <circle cx="36" cy="22" r="1"/><circle cx="96" cy="14" r="0.8"/><circle cx="150" cy="30" r="0.8"/><circle cx="262" cy="18" r="1"/><circle cx="300" cy="44" r="0.8"/>
+        </g>
+        <path d="M282 26 a11 11 0 1 0 8 19 a9 9 0 1 1 -8 -19" fill="#f4e9c8" opacity="0.9"/>
+        <path d="M0 132 Q80 122 160 130 T320 128 V168 H0 Z" fill="#0a2a3c"/>
+        <path d="M18 118 Q92 92 170 108 Q250 122 310 112 L320 168 H0 Z" fill="#14402e"/>
+        <path d="M60 122 Q120 104 190 114" fill="none" stroke="#e6d3a0" stroke-width="4" opacity="0.35" stroke-linecap="round"/>
+        <g transform="translate(206 52)">
+          <path d="M0 62 C-4 40 -6 24 0 6 C6 24 4 40 0 62" fill="#2a1c14"/>
+          <ellipse cx="0" cy="8" rx="34" ry="24" fill="#1d5238"/>
+          <g fill="#a5f0c8" filter="url(#li-glow)">
+            <circle cx="-16" cy="2" r="3"/><circle cx="6" cy="-8" r="3.4"/><circle cx="20" cy="6" r="2.8"/><circle cx="-4" cy="14" r="2.6"/><circle cx="14" cy="18" r="2.2"/>
+          </g>
+        </g>
+        <g>
+          <ellipse cx="96" cy="126" rx="26" ry="8" fill="url(#li-pool)"/>
+          <rect x="93" y="96" width="4" height="28" rx="1.5" fill="#3a2a1c"/>
+          <rect x="88" y="86" width="14" height="14" rx="3" fill="#57422c" stroke="#2a1c14" stroke-width="1.6"/>
+          <circle cx="95" cy="93" r="3.6" fill="#ffd98a" filter="url(#li-glow)"/>
+        </g>
+        <g>
+          <ellipse cx="152" cy="136" rx="18" ry="6" fill="url(#li-pool)" opacity="0.8"/>
+          <rect x="150" y="116" width="3.4" height="18" rx="1.4" fill="#3a2a1c"/>
+          <circle cx="151.7" cy="112" r="3" fill="#ffd98a" filter="url(#li-glow)"/>
+        </g>
+        <g fill="#a5f0c8" filter="url(#li-glow)" opacity="0.9">
+          <circle cx="52" cy="106" r="1.8"/><circle cx="242" cy="120" r="1.8"/><circle cx="272" cy="104" r="1.4"/>
+        </g>
+      </svg>
+      <div class="card-body">
+        <h2>ルミ島のくらし<span class="en">LUMI ISLAND (KIDS)</span></h2>
+        <p>夜になると植物や鉱石がやわらかく光る島の3Dスローライフ。木をきり、魚をつり、クラフトした家具で島と自分の家をかざる。ずかん・じっせき・模様替え・夜だけの拾いものも。キャラクターも音楽もすべてプログラム生成のオリジナル作品。</p>
+        <div class="tags"><span class="tag">Babylon.js 3D</span><span class="tag">PC・iPadタッチ対応</span></div>
+        <div class="card-links">
+          <a class="btn primary" href="https://esma-dev-studio.github.io/lumi-island/">アプリを開く</a>
+        </div>
       </div>
     </div>
 
